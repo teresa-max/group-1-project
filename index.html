@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How Do You Love?</title>
+    <meta
+      name="description"
+      content="A five-moment reflection on the way you care for the people close to you. Four styles: care, guidance, problem-solving and companionship."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+
+    <section id="welcome-view" class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-inner">
+        <p aria-hidden="true">❤️ ❤️ ❤️</p>
+
+        <h1 id="welcome-title">How Do You Love?</h1>
+
+        <p class="lede">
+          Think of the last time someone you loved needed you. What did you reach
+          for first, a warm drink, a plan, or just your full attention? Five little
+          scenes like that, and you will see your love personality by the end.
+        </p>
+
+        <button id="start-button" class="primary">Start the Quiz</button>
+
+        <p class="welcome-note">
+          It takes about two minutes. You can change any answer along the way.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- stage -->
+    <section id="experience-view" aria-label="The five moments" hidden>
+      <div class="stage">
+        <section id="scene-1" class="scene" aria-label="The First Spark">
+          <img class="scene-photo" src="images/photo1.jpg" alt="A phone showing a new message" />
+          <button
+            class="hotspot phone-hotspot"
+            aria-label="Read the phone message"
+            aria-haspopup="dialog"
+            aria-controls="moment-dialog"
+          ></button>
+        </section>
+
+        <section id="scene-2" class="scene" aria-label="A Difficult Day" hidden>
+          <img
+            class="scene-photo"
+            src="images/photo2.jpg"
+            alt="A couple talking after a difficult day"
+          />
+          <button
+            class="hotspot bubble-hotspot"
+            aria-label="Respond to their words"
+            aria-haspopup="dialog"
+            aria-controls="moment-dialog"
+          ></button>
+        </section>
+
+        <section id="scene-3" class="scene" aria-label="Different Plans" hidden>
+          <img
+            class="scene-photo"
+            src="images/photo3.jpg"
+            alt="A couple disagreeing about a movie and a market"
+          />
+          <button
+            class="hotspot ticket-hotspot"
+            aria-label="Pick up the movie ticket"
+            aria-haspopup="dialog"
+            aria-controls="moment-dialog"
+          ></button>
+        </section>
+
+        <section id="scene-4" class="scene" aria-label="A Busy Week" hidden>
+          <img
+            class="scene-photo"
+            src="images/photo4.jpg"
+            alt="Two busy schedules with a calendar between them"
+          />
+          <button
+            class="hotspot calendar-hotspot"
+            aria-label="Explore the calendar"
+            aria-haspopup="dialog"
+            aria-controls="moment-dialog"
+          ></button>
+        </section>
+
+        <section id="scene-5" class="scene" aria-label="One Year Together" hidden>
+          <img
+            class="scene-photo"
+            src="images/photo5.jpg"
+            alt="An anniversary photograph beside a wrapped gift"
+          />
+          <button
+            class="hotspot photo-hotspot"
+            aria-label="Open the anniversary gift"
+            aria-haspopup="dialog"
+            aria-controls="moment-dialog"
+          ></button>
+        </section>
+      </div>
+
+      <div class="hud hud-top">
+        <div class="hud-card scene-label">
+          <p class="eyebrow" id="scene-count">Moment 01 / 05</p>
+          <h2 id="page-title">The First Spark</h2>
+        </div>
+
+        <nav id="scene-nav" class="hud-card" aria-label="Go to a moment">
+          <button class="nav-button">
+            <span class="nav-num">01</span><span class="nav-label">First Spark</span>
+          </button>
+          <button class="nav-button">
+            <span class="nav-num">02</span><span class="nav-label">A Difficult Day</span>
+          </button>
+          <button class="nav-button">
+            <span class="nav-num">03</span><span class="nav-label">Different Plans</span>
+          </button>
+          <button class="nav-button">
+            <span class="nav-num">04</span><span class="nav-label">A Busy Week</span>
+          </button>
+          <button class="nav-button">
+            <span class="nav-num">05</span><span class="nav-label">One Year</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="hud hud-bottom">
+        <div class="hud-card moment-card">
+          <div class="moment-text">
+            <p id="scene-introduction">The evening is over. Your phone lights up.</p>
+            <p id="scene-hint" class="scene-hint">Click the phone screen to answer.</p>
+          </div>
+          <div class="moment-actions">
+            <span id="answered-count" class="answered-count">0 of 5 answered</span>
+            <button id="result-button" class="primary small" hidden>
+              See my result
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question dialog -->
+
+    <dialog id="moment-dialog" aria-labelledby="dialog-title">
+      <button id="close-dialog" class="close-button" aria-label="Close">×</button>
+      <p class="eyebrow" id="dialog-step">Moment 01 / 05</p>
+      <h2 id="dialog-title"></h2>
+      <p id="question"></p>
+      <div id="choices" role="group" aria-labelledby="question"></div>
+      <p id="dialog-response" class="response" hidden></p>
+      <div id="dialog-actions" hidden>
+        <button id="change-answer" class="ghost-button">Change my choice</button>
+        <button id="next-button" class="primary">Next moment</button>
+      </div>
+    </dialog>
+
+    <!-- Result -->
+    <section id="result-view" hidden aria-labelledby="result-title">
+      <figure class="result-hero">
+        <img id="result-image" src="images/ending-care.png" alt="" />
+      </figure>
+
+      <div class="result-body">
+        <p class="eyebrow" id="result-kicker">Your primary style</p>
+        <h2 id="result-title" tabindex="-1"></h2>
+        <p class="tagline" id="result-tagline"></p>
+        <p id="result-description" class="result-description"></p>
+        <p id="result-meta" class="result-meta" hidden></p>
+
+        <div class="result-actions">
+          <button id="restart-button" class="primary">Take it again</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
